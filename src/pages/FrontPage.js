@@ -1,5 +1,6 @@
 import { ReactComponent as FrontPageGraphic } from "../assets/portfolio-update-amico.svg";
 import backgroundWave from "../assets/layered-waves-haikei.svg";
+import { ProjectCard } from "../components";
 
 const BlackGraphic = {
   aspectRatio: "960/540",
@@ -72,7 +73,13 @@ const FrontPageArt = {
   top: "-2%",
 };
 
-const ProjectCarousel = {};
+const ProjectCarousel = {
+  marginTop: "40vh",
+  padding: "1vh 4vw",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+};
 
 function FrontPage() {
   return (
@@ -85,7 +92,12 @@ function FrontPage() {
           <a style={SignInLink}>SIGN IN</a>
           <a style={SignUpLink}>JOIN</a>
         </div>
-        <div style={ProjectCarousel}></div>
+        <div style={ProjectCarousel}>
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+        </div>
       </div>
       <FrontPageGraphic style={FrontPageArt} />
       <a href="https://storyset.com/work">Work illustrations by Storyset</a>
