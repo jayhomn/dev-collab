@@ -1,6 +1,6 @@
 import { ReactComponent as FrontPageGraphic } from "../assets/portfolio-update-amico.svg";
 import backgroundWave from "../assets/layered-waves-haikei.svg";
-import { ProjectCard } from "../components";
+import { ProjectCarousel } from "../components";
 
 const BlackGraphic = {
   aspectRatio: "960/540",
@@ -73,17 +73,13 @@ const FrontPageArt = {
   top: "-2%",
 };
 
-const ProjectCarousel = {
-  marginTop: "40vh",
-  padding: "1vh 4vw",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
+const Parent = {
+  overflowX: "hidden",
 };
 
 function FrontPage() {
   return (
-    <div>
+    <div style={Parent}>
       <div style={BlackGraphic}>
         <div style={Spacer} />
         <div style={Title}>collab.</div>
@@ -92,12 +88,7 @@ function FrontPage() {
           <a style={SignInLink}>SIGN IN</a>
           <a style={SignUpLink}>JOIN</a>
         </div>
-        <div style={ProjectCarousel}>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-        </div>
+        <ProjectCarousel />
       </div>
       <FrontPageGraphic style={FrontPageArt} />
       <a href="https://storyset.com/work">Work illustrations by Storyset</a>

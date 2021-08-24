@@ -48,11 +48,11 @@ const ButtonContainer = {
   textAlign: "right",
 };
 
-function ProjectCard() {
+function ProjectCard(props) {
   return (
     <div style={Card}>
       <div style={CardHeader}>
-        <div style={ProjectTitle}>PayPal</div>
+        <div style={ProjectTitle}>{props.name}</div>
         <div></div>
       </div>
       <div style={Line} />

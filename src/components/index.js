@@ -1,3 +1,4 @@
 import ProjectCard from "./ProjectCard";
+import ProjectCarousel from "./ProjectCarousel";
 
-export { ProjectCard };
+export { ProjectCard, ProjectCarousel };
