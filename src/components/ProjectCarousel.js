@@ -3,7 +3,6 @@ import ProjectCard from "./ProjectCard";
 import { useSpring, animated } from "react-spring";
 
 const Carousel = {
-  marginTop: "40vh",
   padding: "1vh 4vw",
   display: "flex",
   flexDirection: "row",
@@ -43,8 +42,6 @@ function ProjectCarousel() {
       cardsToDisplay.push(cardArray[index]);
       index++;
     }
-
-    console.log(index);
 
     setRenderArray(
       cardsToDisplay.map((card, i) => {

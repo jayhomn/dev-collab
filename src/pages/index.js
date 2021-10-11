@@ -6,6 +6,7 @@ import MyProjects from "./MyProjects";
 import Profile from "./Profile";
 import Project from "./Project";
 import Settings from "./Settings";
+import LoginPage from "./LoginPage";
 
 export {
   FrontPage,
@@ -16,4 +17,5 @@ export {
   Profile,
   Project,
   Settings,
+  LoginPage,
 };

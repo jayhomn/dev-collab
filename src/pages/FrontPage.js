@@ -1,96 +1,33 @@
 import { ReactComponent as FrontPageGraphic } from "../assets/portfolio-update-amico.svg";
-import backgroundWave from "../assets/layered-waves-haikei.svg";
 import { ProjectCarousel } from "../components";
-
-const BlackGraphic = {
-  aspectRatio: "960/540",
-  height: "124vh",
-  width: "100%",
-  backgroundImage: `url(${backgroundWave})`,
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center",
-  backgroundSize: "cover",
-  // background: "#000000",
-  // boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-};
-
-const Spacer = {
-  color: "#000000",
-  height: "14vh",
-};
-
-const Title = {
-  color: "#FFFFFF",
-  fontFamily: "Roboto",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "16vh",
-  textAlign: "right",
-  marginRight: "5vw",
-};
-
-const Slogan = {
-  color: "#FFFFFF",
-  fontFamily: "Roboto",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "6vh",
-  textAlign: "right",
-  marginTop: "2vh",
-  marginRight: "5vw",
-};
-
-const Buttons = {
-  textAlign: "right",
-  marginTop: "3vh",
-  marginRight: "5vw",
-};
-
-const SignInLink = {
-  color: "#FFFFFF",
-  fontFamily: "Roboto",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "3vh",
-  marginRight: "2vw",
-};
-
-const SignUpLink = {
-  color: "#000000",
-  fontFamily: "Roboto",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "3vh",
-  padding: "0.9vh 1.2vw",
-  background: "#78FF86",
-  borderRadius: "31px",
-};
-
-const FrontPageArt = {
-  position: "absolute",
-  height: "82vh",
-  left: "4%",
-  top: "-2%",
-};
-
-const Parent = {
-  overflowX: "hidden",
-};
 
 function FrontPage() {
   return (
-    <div style={Parent}>
-      <div style={BlackGraphic}>
-        <div style={Spacer} />
-        <div style={Title}>collab.</div>
-        <div style={Slogan}>stop thinking, start collabing</div>
-        <div style={Buttons}>
-          <a style={SignInLink}>SIGN IN</a>
-          <a style={SignUpLink}>JOIN</a>
+    <div class="overflow-x-hidden overflow-y-hidden">
+      <div class="h-110 w-full bg-cover bg-no-repeat bg-center bg-layerd-waves">
+        <div class="h-20" />
+        <div class="text-white text-roboto not-italic font-normal text-title text-right mr-24">
+          collab.
         </div>
-        <ProjectCarousel />
+        <div class="text-white text-roboto not-italic font-normal text-right mr-24 mt-5 text-6xl">
+          stop thinking, start collabing
+        </div>
+        <div class="text-right mt-12 mr-24">
+          <a
+            class="text-white text-roboto not-italic font-normal mr-8 text-3xl"
+            href="/login"
+          >
+            SIGN IN
+          </a>
+          <a class="text-black text-roboto not-italic font-normal mr-8 text-3xl bg-green rounded-3xl py-1 px-8">
+            JOIN
+          </a>
+        </div>
+        <div class="mt-72">
+          <ProjectCarousel />
+        </div>
       </div>
-      <FrontPageGraphic style={FrontPageArt} />
+      <FrontPageGraphic class="absolute h-109 left-10 -top-5" />
       <a href="https://storyset.com/work">Work illustrations by Storyset</a>
     </div>
   );

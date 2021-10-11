@@ -9,6 +9,7 @@ import {
   Profile,
   Project,
   Settings,
+  LoginPage,
 } from "./pages";
 
 export default function App() {
@@ -16,26 +17,23 @@ export default function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/createproject">
+            <CreateProject />
           </Route>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/myprojects">
+            <MyProjects />
           </Route>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/profile">
+            <Profile />
           </Route>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/project">
+            <Project />
           </Route>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
-          <Route path="/">
-            <FrontPage />
-          </Route>
-          <Route path="/">
-            <FrontPage />
+          <Route path="/login">
+            <LoginPage />
           </Route>
           <Route path="/">
             <FrontPage />
