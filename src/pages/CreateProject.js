@@ -8,7 +8,7 @@ function CreateProject() {
         <div class="text-gray-800 font-roboto font-medium text-5xl mt-10 mb-10">
           Create New Project
         </div>
-        <label class="text-gray-800 font-roboto font-medium text-3xl mb-4">
+        <label class="text-gray-800 font-roboto font-medium text-3xl mb-10">
           Project Name
         </label>
         <input
@@ -16,7 +16,7 @@ function CreateProject() {
           type="text"
           name="name"
         />
-        <label class="text-gray-800 font-roboto font-medium text-3xl mb-4">
+        <label class="text-gray-800 font-roboto font-medium text-3xl mb-10">
           Project Description
         </label>
         <textarea
@@ -24,7 +24,7 @@ function CreateProject() {
           type="text"
           name="description"
         />
-        <label class="text-gray-800 font-roboto font-medium text-3xl mb-4">
+        <label class="text-gray-800 font-roboto font-medium text-3xl mb-10">
           Additional Links
         </label>
         <input
@@ -32,7 +32,7 @@ function CreateProject() {
           type="text"
           name="links"
         />
-        <label class="text-gray-800 font-roboto font-medium text-3xl mb-4">
+        <label class="text-gray-800 font-roboto font-medium text-3xl mb-10">
           Add Collaborators
         </label>
         <input
@@ -40,6 +40,14 @@ function CreateProject() {
           type="text"
           name="collaborators"
         />
+        <label class="text-gray-800 font-roboto font-medium text-3xl mb-10">
+          Mark as Private:
+          <input
+            class="form-checkbox ml-3 h-5 w-5 rounded-md"
+            type="checkbox"
+            name="private"
+          />
+        </label>
         <input
           class="rounded-3xl py-2 w-28 mt-10"
           type="submit"

@@ -2,13 +2,6 @@ import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { useSpring, animated } from "react-spring";
 
-const Carousel = {
-  padding: "1vh 4vw",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-};
-
 function ProjectCarousel() {
   const [cardArray, setCardArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [renderArray, setRenderArray] = useState([]);
@@ -51,7 +44,10 @@ function ProjectCarousel() {
   }
 
   return (
-    <animated.div style={{ ...Carousel, ...styles }}>
+    <animated.div
+      class="px-28 py-10 flex flex-row justify-between"
+      style={styles}
+    >
       {renderArray}
     </animated.div>
   );

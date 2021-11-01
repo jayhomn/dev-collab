@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { PrivateRoute } from "./routing";
 import {
   FrontPage,
   CreateProject,
@@ -9,37 +12,35 @@ import {
   Profile,
   Project,
   Settings,
-  LoginPage,
 } from "./pages";
+
+export const history = createBrowserHistory();
+
+const onRedirectCallback = (appState) => {
+  console.log(window.location.pathname);
+  history.replace(appState?.returnTo || window.location.pathname);
+};
 
 export default function App() {
   return (
-    <Router>
-      <div>
+    <Auth0Provider
+      domain="dev-fks22fhs.us.auth0.com"
+      clientId="DqAaiqxEehzWAt2f7ulfSgySAQOCD4U4"
+      redirectUri={window.location.origin + "/dashboard"}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <Router history={history}>
         <Switch>
-          <Route path="/createproject">
-            <CreateProject />
-          </Route>
-          <Route path="/myprojects">
-            <MyProjects />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/project">
-            <Project />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/">
+          <PrivateRoute path="/createproject" component={CreateProject} />
+          <PrivateRoute path="/myprojects" component={MyProjects} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/project" component={Project} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route path="/" exact>
             <FrontPage />
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </Auth0Provider>
   );
 }

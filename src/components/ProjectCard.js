@@ -8,7 +8,7 @@ function ProjectCard(props) {
         <div></div>
       </div>
       <div class="border border-solid border-black mt-4" />
-      <div class="font-round not-italic font-light text-lg mt-4">
+      <div class="font-round not-italic font-light text-lg mt-4 text-justify">
         dsadsdadsadSdsa sd sa dsa das d sad sa dsas ds da ads das ads das das
         dasa ddas ad sdasad ad dsaad sads ad ad sd aad sd
       </div>

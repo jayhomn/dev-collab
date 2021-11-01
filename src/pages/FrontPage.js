@@ -1,7 +1,9 @@
 import { ReactComponent as FrontPageGraphic } from "../assets/portfolio-update-amico.svg";
 import { ProjectCarousel } from "../components";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function FrontPage() {
+  const { loginWithRedirect } = useAuth0();
   return (
     <div class="overflow-x-hidden overflow-y-hidden">
       <div class="h-110 w-full bg-cover bg-no-repeat bg-center bg-layerd-waves">
@@ -14,13 +16,10 @@ function FrontPage() {
         </div>
         <div class="text-right mt-12 mr-24">
           <a
-            class="text-white text-roboto not-italic font-normal mr-8 text-3xl"
-            href="/login"
+            class="text-black text-roboto not-italic font-normal text-3xl bg-green rounded-3xl py-1 px-8 cursor-pointer"
+            onClick={() => loginWithRedirect()}
           >
             SIGN IN
-          </a>
-          <a class="text-black text-roboto not-italic font-normal mr-8 text-3xl bg-green rounded-3xl py-1 px-8">
-            JOIN
           </a>
         </div>
         <div class="mt-72">

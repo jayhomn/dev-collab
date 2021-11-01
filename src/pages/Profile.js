@@ -1,4 +1,4 @@
-import { AppBar } from "../components";
+import { AppBar, ProjectGallery } from "../components";
 
 function Profile() {
   return (
@@ -11,7 +11,7 @@ function Profile() {
         </div>
         <div class="w-56" />
       </div>
-      <div class="mr-10 ml-10">
+      <div class="mr-10 ml-10 mb-12">
         <div class="grid w-full grid-rows-profile grid-cols-profile">
           <div class="col-start-1 col-end-2 row-start-1 row-end-2">
             <div class="not-italic font-medium mt-10 text-5xl">Bio</div>
@@ -20,10 +20,11 @@ function Profile() {
               Pellentesque a orci mattis, fermentum lectus non, laoreet nisi.
               Donec faucibus porttitor magna non commodo. Integer blandit
               sodales ex a ullamcorper. Vivamus eget vestibulum tortor.
-              Curabitur eu aliquam ipsum. Duis at dui quis purus scelerisque vol
-            </div>
-            <div class="mt-10">
-              <div class="not-italic font-medium text-5xl">Friends:</div>
+              Curabitur eu aliquam ipsum. Duis at dui quis purus scelerisque
+              vol. Vivamus eget vestibulum tortor. Curabitur eu aliquam ipsum.
+              Duis at dui quis purus scelerisque vol. Vivamus eget vestibulum
+              tortor. Curabitur eu aliquam ipsum. Duis at dui quis purus
+              scelerisque vol
             </div>
           </div>
           <div class="col-start-2 col-end-3 row-start-1 row-end-2 flex flex-row w-full">
@@ -66,6 +67,12 @@ function Profile() {
                   Paypal
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-start-1 col-end-3 row-start-2 row-end-3 flex flex-col">
+            <div class="not-italic font-medium mt-10 text-5xl">Projects</div>
+            <div class="mt-20">
+              <ProjectGallery />
             </div>
           </div>
         </div>

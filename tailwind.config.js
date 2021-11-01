@@ -7,6 +7,7 @@ module.exports = {
       960: "960",
     },
     extend: {
+      inset: { "5/100": "5%" },
       width: { 108: "36rem", 109: "30rem", "9/10": "90%", 110: "30rem" },
       height: {
         107: "23rem",
@@ -28,7 +29,7 @@ module.exports = {
         roboto: ["Roboto"],
       },
       gridTemplateRows: {
-        profile: "100%",
+        profile: "auto auto",
       },
       gridTemplateColumns: {
         profile: "72rem auto",
@@ -39,5 +40,10 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms")({
+      strategy: "class",
+    }),
+  ],
 };

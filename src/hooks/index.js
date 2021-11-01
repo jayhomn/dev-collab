@@ -1,3 +1,4 @@
 import useFetch from "./useFetch";
+import { useAuth } from "./useAuth";
 
-export default { useFetch };
+export default { useFetch, useAuth };
