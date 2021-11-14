@@ -7,8 +7,10 @@ import Profile from "./Profile";
 import Project from "./Project";
 import Settings from "./Settings";
 import LoginPage from "./LoginPage";
+import NewUser from "./NewUser";
 
 export {
+  NewUser,
   FrontPage,
   CreateProject,
   Dashboard,

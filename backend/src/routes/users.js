@@ -1,23 +1,16 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const userController = require("../controller/usersController");
 
-router.get("/", function (req, res) {
-  res.send("Users");
-});
+router.get("/user", userController.user_list);
 
-router.post("/", function (req, res) {
-  res.send("Create User");
-});
+router.post("/user", userController.user_create);
 
-router.get("/:userId", function (req, res) {
-  res.send("User: " + req.params.userId);
-});
+router.get("/user/:userId", userController.user_get_by_id);
 
-router.put("/:userId", function (req, res) {
-  res.send("Update User: " + req.params.userId);
-});
+router.put("/user/:userId", userController.user_update_by_id);
 
-router.delete("/:userId", function (req, res) {
+router.delete("/user/:userId", function (req, res) {
   res.send("Delete User: " + req.params.userId);
 });
 

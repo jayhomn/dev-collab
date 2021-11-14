@@ -12,12 +12,14 @@ import {
   Profile,
   Project,
   Settings,
+  NewUser,
 } from "./pages";
 
 export const history = createBrowserHistory();
 
 const onRedirectCallback = (appState) => {
   console.log(window.location.pathname);
+  console.log(appState?.returnTo);
   history.replace(appState?.returnTo || window.location.pathname);
 };
 
@@ -36,6 +38,7 @@ export default function App() {
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/project" component={Project} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/newuser" component={NewUser} />
           <Route path="/" exact>
             <FrontPage />
           </Route>

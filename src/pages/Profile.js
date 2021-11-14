@@ -1,4 +1,6 @@
 import { AppBar, ProjectGallery } from "../components";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 function Profile() {
   return (

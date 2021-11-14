@@ -1,24 +1,32 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const projectController = require("../controller/projectsController");
 
-router.get("/", function (req, res) {
-  res.send("Projects");
-});
+router.get("/project", projectController.project_list);
 
-router.post("/", function (req, res) {
-  res.send("Create Project");
-});
+router.post("/project", projectController.project_create);
 
-router.get("/:projectId", function (req, res) {
-  res.send("Project: " + req.params.projectId);
-});
+router.get("/project/:projectId", projectController.project_get_by_id);
 
-router.put("/:projectId", function (req, res) {
-  res.send("Update Project: " + req.params.projectId);
-});
+router.get(
+  "/project/by-title/:projectTitle",
+  projectController.project_get_by_title
+);
 
-router.delete("/:projectId", function (req, res) {
-  res.send("Delete Project: " + req.params.projectId);
-});
+router.put("/project/:projectId", projectController.project_update_by_id);
+
+router.delete("/project/:projectId", projectController.project_delete_by_id);
+
+router.get("/project/collab", projectController.project_get_by_title);
+
+router.delete(
+  "/project/:projectId/collab",
+  projectController.project_remove_collaborators
+);
+
+router.post(
+  "/project/:projectId/collab",
+  projectController.project_add_collaborators
+);
 
 module.exports = router;
