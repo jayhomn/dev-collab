@@ -46,6 +46,7 @@ model Link {
   updatedAt DateTime @updatedAt
   project   Project  @relation(fields: [projectId], references: [id])
   projectId String
+  linkName  String   @db.VarChar(255)
   link      String   @db.Text
 }
 

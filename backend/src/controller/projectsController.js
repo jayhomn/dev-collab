@@ -2,7 +2,12 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 exports.project_list = async function (req, res) {
-  const projects = await prisma.project.findMany();
+  const projects = await prisma.project.findMany({
+    take: parseInt(req.query.limit),
+    cursor: {
+      id: req.query.after_id,
+    },
+  });
   res.send(projects);
 };
 
@@ -31,10 +36,9 @@ exports.project_create = async function (req, res) {
       projectTagThird: req.body.projectTagThird,
       projectTagFourth: req.body.projectTagFourth,
       isPrivate: req.body.isPrivate,
-      projectCollaborators: undefined,
       projectLinks: {
         create: req.body.projectLinks.map((x) => {
-          return { link: x };
+          return { linkName: x.linkName, link: x.link };
         }),
       },
     },
