@@ -5,7 +5,7 @@ exports.project_list = async function (req, res) {
   const projects = await prisma.project.findMany({
     take: parseInt(req.query.limit),
     cursor: {
-      id: req.query.after_id,
+      id: parseInt(req.query.after_id),
     },
   });
   res.send(projects);
