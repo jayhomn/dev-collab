@@ -14,7 +14,7 @@ function ProjectCard(props) {
         dsadsdadsadSdsa sd sa dsa das d sad sa dsas ds da ads das ads das das
         dasa ddas ad sdasad ad dsaad sads ad ad sd aad sd
       </div>
-      <div className="mt-6">
+      <div className="mt-5">
         <JoinButton />
       </div>
     </div>

@@ -10,7 +10,7 @@ function DashBoard() {
       <AppBar />
       <div className="flex flex-col">
         <div className="flex flex-row mt-14 mb-12 px-20 items-end">
-          <div className="font-round text-8xl mr-6">My Projects</div>
+          <div className="font-roboto text-8xl mr-6">My Projects</div>
           <button
             onClick={() => {
               history.push("/createproject");
