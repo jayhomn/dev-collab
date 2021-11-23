@@ -42,3 +42,13 @@ exports.user_update_by_id = async function (req, res) {
 exports.user_delete_by_id = async function (req, res) {
   res.send("NOT IMPLEMENTED: Author delete GET");
 };
+
+exports.user_get_collabs = async function (req, res) {
+  const collabs = await prisma.usersOnProjects.findMany({
+    where: { userId: req.params.userId },
+    include: {
+      project: true,
+    },
+  });
+  res.send(collabs);
+};

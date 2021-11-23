@@ -7,7 +7,7 @@ module.exports = {
       960: "960",
     },
     extend: {
-      inset: { "5/100": "5%" },
+      inset: { "5/100": "5%", join: "70rem" },
       width: { 108: "36rem", 109: "30rem", "9/10": "90%", 110: "30rem" },
       height: {
         107: "23rem",

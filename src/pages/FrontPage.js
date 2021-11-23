@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function FrontPage() {
   const { loginWithRedirect } = useAuth0();
   return (
-    <div className="overflow-x-hidden overflow-y-hidden">
+    <div className="overflow-x-hidden overflow-y-hidden pb-10">
       <div className="h-110 w-full bg-cover bg-no-repeat bg-center bg-layerd-waves">
         <div className="h-20" />
         <div className="text-white text-roboto not-italic font-normal text-title text-right mr-24">
@@ -16,7 +16,7 @@ function FrontPage() {
         </div>
         <div className="text-right mt-12 mr-24">
           <button
-            className="text-black text-roboto not-italic font-normal text-3xl bg-green rounded-3xl py-1 px-8 cursor-pointer"
+            className="text-black text-roboto not-italic font-normal text-3xl bg-green rounded-3xl py-2 px-8 cursor-pointer"
             onClick={() => loginWithRedirect()}
           >
             SIGN IN

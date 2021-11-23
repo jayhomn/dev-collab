@@ -11,10 +11,8 @@ function DashBoard() {
     (state, newState) => ({ ...state, ...newState }),
     { loaded: false, projects: [], paginationCursor: 1 }
   );
-  //const [isLoaded, setIsLoaded] = useState(false);
-  //const [projects, setProjects] = useState([]);
+
   const [projectsToDisplay, setProjectsToDisplay] = useState([]);
-  //const [paginationCursor, setPaginationCursor] = useState(1);
   const intersectionObserver = new IntersectionObserver(loadMore, {
     rootMargin: "10px",
     threshold: 1.0,
@@ -22,7 +20,7 @@ function DashBoard() {
   let history = useHistory();
 
   useEffect(() => {
-    (async function initiatedPageLoade() {
+    (async function initiatedPageLoad() {
       if (isAuthenticated) {
         const userId = user.sub.split("|")[1];
 
@@ -66,9 +64,9 @@ function DashBoard() {
       let projectRow = [];
       for (let j = cursor; j < cursor + 4; j++) {
         if (j < dataState.projects.length) {
-          projectRow.push(
-            <ProjectCard key={j} name={dataState.projects[j].projectTitle} />
-          );
+          projectRow.push(<ProjectCard key={j} {...dataState.projects[j]} />);
+        } else {
+          projectRow.push(<div key={j} className="w-96 h-72" />);
         }
       }
       toDisplay.push(

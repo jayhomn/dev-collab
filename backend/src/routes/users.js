@@ -14,4 +14,6 @@ router.delete("/user/:userId", function (req, res) {
   res.send("Delete User: " + req.params.userId);
 });
 
+router.get("/user/:userId/collab", userController.user_get_collabs);
+
 module.exports = router;

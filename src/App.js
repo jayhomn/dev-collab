@@ -36,7 +36,7 @@ export default function App() {
           <PrivateRoute path="/createproject" component={CreateProject} />
           <PrivateRoute path="/myprojects" component={MyProjects} />
           <PrivateRoute path="/profile" component={Profile} />
-          <PrivateRoute path="/project" component={Project} />
+          <PrivateRoute path="/project/:projectId" component={Project} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/newuser" component={NewUser} />
           <Route path="/" exact>

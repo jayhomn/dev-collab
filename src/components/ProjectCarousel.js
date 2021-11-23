@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { useSpring, animated } from "react-spring";
+import axios from "axios";
 
 function ProjectCarousel() {
-  const [cardArray, setCardArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [cardArray, setCardArray] = useState([]);
   const [renderArray, setRenderArray] = useState([]);
   const [styles, api] = useSpring(() => ({
     opacity: 0,
@@ -13,17 +14,28 @@ function ProjectCarousel() {
   let index = 0;
 
   useEffect(() => {
+    (async function getProjectsToDisplay() {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/project?limit=12&after_id=1`
+      );
+      setCardArray(response.data);
+    })();
+  }, []);
+
+  useEffect(() => {
     api.start({
       reset: true,
       from: { opacity: 0, x: 140 },
       to: { opacity: 1, x: 0 },
     });
-  });
+  }, [renderArray]);
 
   useEffect(() => {
-    UpdateCards();
-    setInterval(() => UpdateCards(), 6000);
-  }, []);
+    if (cardArray.length !== 0) {
+      UpdateCards();
+      setInterval(() => UpdateCards(), 6000);
+    }
+  }, [cardArray]);
 
   function UpdateCards() {
     let cardsToDisplay = [];
@@ -38,7 +50,7 @@ function ProjectCarousel() {
 
     setRenderArray(
       cardsToDisplay.map((card, i) => {
-        return <ProjectCard key={card} name={card} />;
+        return <ProjectCard key={i} {...card} />;
       })
     );
   }
