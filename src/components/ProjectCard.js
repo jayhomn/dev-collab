@@ -1,12 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
 import JoinButton from "./JoinButton";
 
 function ProjectCard(props) {
-  const { user } = useAuth0();
-  const [projectId, setProjectId] = useState(props.projectId);
-  const [ownerUserId, setOwnerId] = useState(props.ownerId);
-
   return (
     <div className="bg-white rounded-3xl w-96 h-72 shadow-lg px-10 py-6 relative z-0">
       <div className="flex flex-row items-baseline justify-between">

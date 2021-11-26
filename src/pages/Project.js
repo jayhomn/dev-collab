@@ -7,7 +7,7 @@ function Project() {
   const { projectId } = useParams();
   const [dataState, setDataState] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
-    { loaded: false, project: [], links: [] }
+    { loaded: false, project: [], links: [], collaborators: [] }
   );
 
   useEffect(() => {
@@ -15,11 +15,19 @@ function Project() {
       const project = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/project/${projectId}`
       );
+      const collaborators = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/project/${projectId}/collab`
+      );
       const links = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/project/${projectId}/links`
       );
 
-      setDataState({ loaded: true, project: project.data, links: links.data });
+      setDataState({
+        loaded: true,
+        project: project.data,
+        links: links.data,
+        collaborators: collaborators.data,
+      });
     })();
   }, []);
 
@@ -71,42 +79,22 @@ function Project() {
                     Collaborators
                   </div>
                   <div class="h-112 w-109 overflow-y-scroll mt-10">
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
-                      <div class="rounded-full  bg-black h-20 w-20" />
-                      <div class="font-roboto text-4xl not-italic font-light">
-                        John Doe
-                      </div>
-                    </div>
+                    {dataState.collaborators.map((collaborator, i) => {
+                      return (
+                        <div class="flex flex-row justify-between items-center bg-white w-9/10 rounded-3xl text-3xl font-medium shadow-lg px-5 py-4 mb-4">
+                          <div class="rounded-full bg-gray-100 h-20 w-20 flex flex-col justify-center">
+                            <img
+                              src={`https://avatars.dicebear.com/api/identicon/${collaborator.user.id}.svg`}
+                              className="h-8 w-10 ml-auto mr-auto"
+                              alt=""
+                            />
+                          </div>
+                          <div class="font-roboto text-4xl not-italic font-light">
+                            {collaborator.user.userDisplayName}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

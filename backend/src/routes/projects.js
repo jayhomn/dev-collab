@@ -21,7 +21,15 @@ router.delete("/project/:projectId", projectController.project_delete_by_id);
 
 router.get("/project/:projectId/links", projectController.project_get_links);
 
-router.get("/project/collab", projectController.project_get_by_title);
+router.get(
+  "/project/:projectId/collab",
+  projectController.project_get_collaborators
+);
+
+router.get(
+  "/project/:projectId/collab/:userId",
+  projectController.project_contain_collaborators
+);
 
 router.post(
   "/project/:projectId/collab",

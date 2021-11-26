@@ -94,6 +94,31 @@ exports.project_delete_by_id = async function (req, res) {
   res.send(project);
 };
 
+exports.project_get_collaborators = async function (req, res) {
+  const collaborators = await prisma.usersOnProjects.findMany({
+    where: {
+      project: { projectId: req.params.projectId },
+    },
+    include: {
+      user: true,
+    },
+  });
+  res.send(collaborators);
+};
+
+exports.project_contain_collaborators = async function (req, res) {
+  const collaborator = await prisma.usersOnProjects.findUnique({
+    where: {
+      project: { projectId: req.params.projectId },
+      user: { id: req.params.userId },
+    },
+    include: {
+      user: true,
+    },
+  });
+  res.send(collaborator);
+};
+
 exports.project_add_collaborators = async function (req, res) {
   const collaborator = await prisma.usersOnProjects.create({
     data: {
