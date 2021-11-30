@@ -25,14 +25,14 @@ function DashBoard() {
         const userId = user.sub.split("|")[1];
 
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/user/${userId}`
+          `${process.env.PUBLIC_URL}/api/user/${userId}`
         );
         const returnedUser = res.data;
         if (!returnedUser) {
           history.push("/newuser");
         } else {
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/api/project?limit=12&after_id=${dataState.paginationCursor}`
+            `${process.env.PUBLIC_URL}/api/project?limit=12&after_id=${dataState.paginationCursor}`
           );
 
           setDataState({
@@ -85,7 +85,7 @@ function DashBoard() {
       if (entry.isIntersecting) {
         axios
           .get(
-            `${process.env.REACT_APP_API_URL}/api/project?limit=12&after_id=${dataState.paginationCursor}`
+            `${process.env.PUBLIC_URL}/api/project?limit=12&after_id=${dataState.paginationCursor}`
           )
           .then((response) => {
             setDataState({

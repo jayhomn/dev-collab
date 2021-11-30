@@ -17,7 +17,7 @@ function JoinButton(props) {
     if (isAuthenticated) {
       if (!isOwner) {
         await axios.post(
-          `${process.env.REACT_APP_API_URL}/api/project/${props.projectId}/collab`,
+          `${process.env.PUBLIC_URL}/api/project/${props.projectId}/collab`,
           { userId: userId }
         );
       }

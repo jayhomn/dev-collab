@@ -23,7 +23,7 @@ function DashBoard() {
     (async function initiatedPageLoad() {
       const userId = user.sub.split("|")[1];
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/project/by-user/${userId}?limit=12`
+        `${process.env.PUBLIC_URL}/api/project/by-user/${userId}?limit=12`
       );
 
       if (response.data.length > 0) {
@@ -81,7 +81,7 @@ function DashBoard() {
       if (entry.isIntersecting) {
         axios
           .get(
-            `${process.env.REACT_APP_API_URL}/api/project/by-user/${userId}?limit=12&after_id=${dataState.paginationCursor}`
+            `${process.env.PUBLIC_URL}/api/project/by-user/${userId}?limit=12&after_id=${dataState.paginationCursor}`
           )
           .then((response) => {
             if (response.data.length > 0) {

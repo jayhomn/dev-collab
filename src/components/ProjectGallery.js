@@ -22,7 +22,7 @@ function ProjectGallery() {
   useEffect(() => {
     const userId = user.sub.split("|")[1];
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/project/by-user/${userId}`)
+      .get(`${process.env.PUBLIC_URL}/api/project/by-user/${userId}`)
       .then((res) => {
         setCardArray(res.data);
       });

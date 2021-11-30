@@ -16,7 +16,7 @@ function NewUser() {
     const userId = user.sub.split("|")[1];
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/user`, {
+      .post(`${process.env.PUBLIC_URL}/api/user`, {
         userId: userId,
         userDisplayName: displayName,
         userEmail: user.email,

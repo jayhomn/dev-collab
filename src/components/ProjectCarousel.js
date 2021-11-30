@@ -16,7 +16,7 @@ function ProjectCarousel() {
   useEffect(() => {
     (async function getProjectsToDisplay() {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/project?limit=12&after_id=1`
+        `${process.env.PUBLIC_URL}/api/project?limit=12&after_id=1`
       );
       setCardArray(response.data);
     })();

@@ -13,13 +13,13 @@ function Project() {
   useEffect(() => {
     (async function initialLoad() {
       const project = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/project/${projectId}`
+        `${process.env.PUBLIC_URL}/api/project/${projectId}`
       );
       const collaborators = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/project/${projectId}/collab`
+        `${process.env.PUBLIC_URL}/api/project/${projectId}/collab`
       );
       const links = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/project/${projectId}/links`
+        `${process.env.PUBLIC_URL}/api/project/${projectId}/links`
       );
 
       setDataState({

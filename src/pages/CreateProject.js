@@ -24,7 +24,7 @@ function CreateProject() {
     const userId = user.sub.split("|")[1];
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/project`, {
+      .post(`${process.env.PUBLIC_URL}/api/project`, {
         userId: userId,
         projectTitle: projectTitle,
         projectDescription: projectDescription,

@@ -24,10 +24,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "cd backend && npm start ",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "craco start"
   },
   "eslintConfig": {
     "extends": [

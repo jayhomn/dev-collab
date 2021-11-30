@@ -14,10 +14,10 @@ function Profile() {
     (async function initialLoad() {
       const userId = user.sub.split("|")[1];
       const userData = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/user/${userId}`
+        `${process.env.PUBLIC_URL}/api/user/${userId}`
       );
       const collabs = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/user/${userId}/collab`
+        `${process.env.PUBLIC_URL}/api/user/${userId}/collab`
       );
       setUserProfile({
         loaded: true,
