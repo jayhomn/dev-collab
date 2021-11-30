@@ -24,7 +24,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cd backend && npm start ",
+    "start": "cd backend && npm install && npm start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
