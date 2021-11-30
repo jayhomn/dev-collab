@@ -26,7 +26,7 @@ const onRedirectCallback = (appState) => {
 export default function App() {
   return (
     <Auth0Provider
-      domain="dev-fks22fhs.us.auth0.com"
+      domain="https://dev-fks22fhs.us.auth0.com"
       clientId="DqAaiqxEehzWAt2f7ulfSgySAQOCD4U4"
       redirectUri={window.location.origin + "/dashboard"}
       onRedirectCallback={onRedirectCallback}

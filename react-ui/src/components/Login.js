@@ -2,9 +2,6 @@ import React from "react";
 import { ReactComponent as GoogleIcon } from "../assets/google.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const clientId =
-  "204104404401-033q73uv164mr17q9vqv9aa7k6sdiojm.apps.googleusercontent.com";
-
 function Login() {
   const { loginWithRedirect } = useAuth0();
   return (
