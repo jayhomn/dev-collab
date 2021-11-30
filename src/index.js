@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const path = require("path");
 
 const usersRoute = require("./routes/users");
 const projectsRoute = require("./routes/projects");
@@ -34,7 +35,6 @@ app.listen(PORT, () => {
 });
 
 app.get("*", (req, res) => {
-  let path = req.params["0"].substring(1);
   let url = path.join(__dirname, "../react-ui/build", "index.html");
   res.sendFile(url);
 });
