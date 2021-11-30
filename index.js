@@ -7,8 +7,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 
-const usersRoute = require("./routes/users");
-const projectsRoute = require("./routes/projects");
+const usersRoute = require("./src/routes/users");
+const projectsRoute = require("./src/routes/projects");
 
 const PORT = process.env.PORT || 4000;
 // defining the Express app
