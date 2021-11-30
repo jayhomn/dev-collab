@@ -15,7 +15,23 @@ const PORT = process.env.PORT || 4000;
 const app = express();
 
 // adding Helmet to enhance your API's security
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:"],
+        connectSrc: ["'self'", "https://dev-fks22fhs.us.auth0.com/oauth/token"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        objectSrc: ["'self'"],
+        mediaSrc: ["'self'"],
+        frameSrc: ["'self'", "https://dev-fks22fhs.us.auth0.com"],
+      },
+    },
+  })
+);
 
 // using bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
