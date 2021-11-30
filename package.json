@@ -28,8 +28,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "heroku-prebuild": "cd backend && npm install && npx prisma generate && npm start",
-    "heroku-postbuild": "craco start"
+    "heroku-postbuild": "cd backend && npm install && npx prisma generate && npm start"
   },
   "eslintConfig": {
     "extends": [
