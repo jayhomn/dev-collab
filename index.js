@@ -29,7 +29,7 @@ app.use(morgan("combined"));
 app.use("/api/", usersRoute);
 app.use("/api/", projectsRoute);
 
-app.use(express.static(__dirname + "/react-ui/public"));
+app.use(express.static(__dirname + "/react-ui/build"));
 
 // List of all the files that should be served as-is
 let protected = ["transformed.js", "main.css", "favicon.ico"];
