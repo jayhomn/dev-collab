@@ -22,7 +22,11 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:"],
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://avatars.dicebear.com/api/identicon/",
+        ],
         connectSrc: ["'self'", "https://dev-fks22fhs.us.auth0.com/oauth/token"],
         fontSrc: ["'self'", "https://fonts.gstatic.com"],
         objectSrc: ["'self'"],
