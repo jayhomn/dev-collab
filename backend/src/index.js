@@ -9,6 +9,7 @@ const morgan = require("morgan");
 const usersRoute = require("./routes/users");
 const projectsRoute = require("./routes/projects");
 
+const PORT = process.env.PORT || 4000;
 // defining the Express app
 const app = express();
 
@@ -28,6 +29,6 @@ app.use("/api/", usersRoute);
 app.use("/api/", projectsRoute);
 
 // starting the server
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log("listening on port 3001");
 });
