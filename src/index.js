@@ -34,6 +34,6 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  let url = path.join(__dirname, "../react-ui/public", "index.html");
+  let url = path.join(__dirname, "../react-ui/build", "index.html");
   res.sendFile(url);
 });
