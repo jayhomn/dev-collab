@@ -33,7 +33,7 @@ app.listen(PORT, () => {
   console.log("listening on port 3001");
 });
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   let url = path.join(__dirname, "../react-ui/build", "index.html");
   res.sendFile(url);
 });
