@@ -1,10 +1,20 @@
 import { AppBar } from "../components";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
+const scrollIntoViewOptions = { behavior: "smooth" };
+
+function ErrorBar(props) {
+  return (
+    <div className="bg-red-200 rounded-xl px-4 py-4 mx-96 mt-6 font-medium">
+      {props.message}
+    </div>
+  );
+}
 
 function CreateProject() {
   const { user } = useAuth0();
@@ -18,10 +28,36 @@ function CreateProject() {
   const [links, setLinks] = useState([]);
   const [linkInputName, setLinkInputName] = useState("");
   const [linkInput, setLinkInput] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const projectTitleRef = useRef(null);
+  const projectDesRef = useRef(null);
+  const projectTagsRef = useRef(null);
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const userId = user.sub.split("|")[1];
+    console.log(tags.length);
+    if (!projectTitle) {
+      setIsError(true);
+      setErrorMsg("Project Title cannot be empty.");
+      projectTitleRef.current.scrollIntoView(scrollIntoViewOptions);
+      projectTitleRef.current.focus();
+      return;
+    } else if (!projectDescription) {
+      setIsError(true);
+      setErrorMsg("Project Description cannot be empty.");
+      projectDesRef.current.scrollIntoView(scrollIntoViewOptions);
+      projectDesRef.current.focus();
+      return;
+    } else if (tags.length === 0) {
+      setIsError(true);
+      setErrorMsg("You must enter at least one Tag.");
+      projectTagsRef.current.scrollIntoView(scrollIntoViewOptions);
+      projectTagsRef.current.focus();
+      return;
+    }
 
     axios
       .post(`${process.env.PUBLIC_URL}/api/project`, {
@@ -43,6 +79,7 @@ function CreateProject() {
   function handleChange(event) {
     const target = event.target;
     const name = target.name;
+    setIsError(false);
 
     switch (name) {
       case "projecttitle":
@@ -97,7 +134,6 @@ function CreateProject() {
 
   function handleLink(event) {
     event.preventDefault();
-    console.log(event);
 
     setLinks((prevState) => [
       ...prevState,
@@ -118,8 +154,9 @@ function CreateProject() {
   }
 
   return (
-    <div className="overflow-x-hidden overflow-y-hidden">
+    <div className="overflow-x-hidden overflow-y-hidden ">
       <AppBar />
+      {isError && <ErrorBar message={errorMsg} />}
       <form className="flex flex-col px-96 pb-24" onSubmit={handleSubmit}>
         <div className="text-gray-800 font-roboto font-medium text-5xl mt-10 mb-10">
           Create New Project
@@ -128,18 +165,28 @@ function CreateProject() {
           Project Title
         </label>
         <input
-          className="border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 focus:outline-none focus:bg-white focus:shadow"
+          className={
+            isError
+              ? "border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 focus:outline-none focus:border-red-400 focus:bg-white focus:shadow"
+              : "border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 focus:outline-none focus:bg-white focus:shadow"
+          }
           type="text"
           name="projecttitle"
+          ref={projectTitleRef}
           onChange={handleChange}
         />
         <label className="text-gray-800 font-roboto font-medium text-3xl mb-10">
           Project Description
         </label>
         <textarea
-          className="border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 h-60 focus:outline-none focus:bg-white focus:shadow"
+          className={
+            isError
+              ? "border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 h-60 focus:outline-none focus:border-red-400 focus:bg-white focus:shadow"
+              : "border-2 border-light-blue-500 border-opacity-100 rounded-xl py-2 px-4 mb-6 h-60 focus:outline-none focus:bg-white focus:shadow"
+          }
           type="text"
           name="projectdescription"
+          ref={projectDesRef}
           onChange={handleChange}
         />
         <label className="text-gray-800 font-roboto font-medium text-3xl mb-10">
@@ -191,21 +238,27 @@ function CreateProject() {
           </div>
         </div>
 
-        <label className="text-gray-800 font-roboto font-medium text-3xl mb-10">
+        <label className="text-gray-800 font-roboto font-medium text-3xl mb-2">
           Project Tags
         </label>
+        <p className="mb-10">Press "," to add your tag.</p>
         <div className="border-2 border-light-blue-500 border-opacity-100 rounded-xl py-3 px-4 mb-6 focus:outline-none focus:bg-white focus:shadow flex flex-row">
           {tags.map((tag) => (
             <div className="bg-red-200 rounded-3xl px-4 mr-2 py-1">{tag}</div>
           ))}
           <input
-            className="bg-gray-100 rounded-lg px-4 py-1 focus:outline-none"
+            className={
+              isError
+                ? "bg-gray-100 rounded-lg px-4 py-1 border-2 focus:outline-none focus:border-red-400 focus:border-opacity-100"
+                : "bg-gray-100 rounded-lg px-4 py-1 focus:outline-none"
+            }
             value={tagInput}
             type="text"
             name="projecttags"
             placeholder="Enter a Tag"
             onChange={handleChange}
             onKeyDown={handleNewTag}
+            ref={projectTagsRef}
           />
         </div>
 
